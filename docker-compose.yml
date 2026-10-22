@@ -1,0 +1,50 @@
+# ============================================================
+# VERSÃO SOLUÇÃO (para o instrutor / conferência)
+# Tudo já descomentado e funcionando. Para rodar a solução direta:
+#   docker compose up -d
+# ============================================================
+networks:
+  workshop_net:
+    driver: bridge
+
+#### ETAPA 1: FRONTEND (interface + proxy reverso) - Não descomentar essa LINHA
+#services:
+#  frontend:
+#    image: nginx:alpine
+#    container_name: web_app
+#    ports:
+#      - "${FRONTEND_PORT}:80"
+#    volumes:
+#      - ./frontend/index.html:/usr/share/nginx/html/index.html:ro
+#      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+#    networks:
+#      - workshop_net
+
+#### ETAPA 2: BACKEND (API) - Não descomentar essa LINHA
+#  backend:
+#    build: ./backend
+#    container_name: api_app
+#    environment:
+#      - BACKEND_PORT=${BACKEND_PORT}
+#      - DB_HOST=${DB_HOST}
+#      - DB_USER=${DB_USER}
+#      - DB_PASS=${DB_PASS}
+#      - DB_NAME=${DB_NAME}
+#    networks:
+#      - workshop_net
+
+#### ETAPA 3: BANCO DE DADOS - Não descomentar essa LINHA
+#  banco_de_dados:
+#    image: postgres:15-alpine
+#    container_name: db_app
+#    environment:
+#      POSTGRES_USER: ${DB_USER}
+#      POSTGRES_PASSWORD: ${DB_PASS}
+#      POSTGRES_DB: ${DB_NAME}
+#    networks:
+#      - workshop_net
+#    volumes:
+#      - dados_banco:/var/lib/postgresql/data
+
+volumes:
+  dados_banco:
