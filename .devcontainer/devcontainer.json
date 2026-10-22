@@ -1,0 +1,22 @@
+{
+  "name": "Workshop Docker",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [80],
+  "portsAttributes": {
+    "80": {
+      "label": "Dashboard do Workshop",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "postCreateCommand": "cp -n .env.example .env; docker compose -f docker-compose.solution.yml pull; docker compose -f docker-compose.solution.yml build"
+}
